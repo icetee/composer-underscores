@@ -1,4 +1,14 @@
 {
+    "name": "icetee/composer-underscores",
+    "description": "Underscores.me template generate with composer",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tamás András Horváth",
+            "email": "htomy92@gmail.com"
+        }
+    ],
     "require": {
         "symfony/yaml": "^3.1"
     }

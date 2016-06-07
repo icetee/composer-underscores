@@ -1,0 +1,44 @@
+# Apache
+log/
+*.log
+.sass-cache
+
+# Atom
+.ftpconfig
+
+# Composer
+local-config.php
+composer.phar
+/vendor/
+
+# Frontend ignore
+bower_components
+node_modules
+
+# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+
+# OS spec
+.Spotlight-V100
+.Trashes
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+# Vagrant
+.vagrant
+
+# WordPress + popular plugin generated — adapted from:
+# https://github.com/github/gitignore/blob/master/WordPress.gitignore
+sitemap.xml
+sitemap.xml.gz
+content/advanced-cache.php
+content/backup-db/
+content/backups/
+content/blogs.dir/
+content/cache/
+content/uploads/
+content/upgrade/
+content/wp-cache-config.php

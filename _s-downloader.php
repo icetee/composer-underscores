@@ -25,7 +25,7 @@ class Downloader extends Underscores {
     		),
             "config" => array(
                 "path"      => dirname(__FILE__),
-                "file"      => '_s.yml'
+                "file"      => 'config.yml'
             )
         );
         $this->dir = dirname(__FILE__) . '/';
@@ -100,4 +100,6 @@ class Downloader extends Underscores {
         }
     }
 }
+
+new Downloader();
 ?>

@@ -2,13 +2,6 @@
 
 namespace icetee\Composer;
 
-require_once(__DIR__ . '/Underscores.php');
-
-/**
- *  Underscores\Downloader
- *  @version 1.1.1
- *
- */
 use Symfony\Component\Yaml\Yaml;
 
 class Downloader extends Underscores {
@@ -33,7 +26,6 @@ class Downloader extends Underscores {
         $this->dir = dirname(__FILE__) . '/../';
         $this->params = array_replace_recursive($this->params, $params);
         $this->theme = $this->params["theme"];
-        var_dump($this->getInstallPath());
         $this->init();
     }
 

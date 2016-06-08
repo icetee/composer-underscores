@@ -3,7 +3,6 @@
     "description": "Underscores.me template generate with composer",
     "type": "composer-installer",
     "license": "MIT",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Tamás András Horváth",

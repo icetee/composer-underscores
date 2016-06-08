@@ -1,15 +1,31 @@
 {
     "name": "icetee/composer-underscores",
     "description": "Underscores.me template generate with composer",
-    "type": "library",
+    "type": "composer-installer",
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Tamás András Horváth",
             "email": "htomy92@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-0": {
+            "icetee\\Composer\\": "src/"
+        }
+    },
+    "extra": {
+        "class": "icetee\\Composer\\Downloader"
+    },
     "require": {
+        "composer-plugin-api": "^1.0",
         "symfony/yaml": "^3.1"
+    },
+    "require-dev": {
+        "composer/composer": "1.0.*@dev"
+    },
+    "conflict": {
+        "composer/installers": "<1.0.6"
     }
 }

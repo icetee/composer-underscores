@@ -1,16 +1,18 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
-require_once(__DIR__ . '/lib.php');
+
+namespace icetee\Composer;
+
+require_once(__DIR__ . '/Underscores.php');
 
 /**
  *  Underscores\Downloader
- *  @version 1.1
+ *  @version 1.1.1
  *
  */
 use Symfony\Component\Yaml\Yaml;
 
 class Downloader extends Underscores {
-    function __construct($params) {
+    function __construct($params = array()) {
         // Default parameters
         $this->params = array(
             "theme" => array(
@@ -28,8 +30,10 @@ class Downloader extends Underscores {
                 "file"      => 'config.yml'
             )
         );
-        $this->dir = dirname(__FILE__) . '/';
+        $this->dir = dirname(__FILE__) . '/../';
         $this->params = array_replace_recursive($this->params, $params);
+        $this->theme = $this->params["theme"];
+        var_dump($this->getInstallPath());
         $this->init();
     }
 
@@ -37,10 +41,12 @@ class Downloader extends Underscores {
         // Initialize config
         $path = $this->params["config"]["path"] . $this->params["config"]["file"];
         $yml = Yaml::parse(file_get_contents($path));
-        $this->theme = array_replace(
-            $this->params["theme"],
-            $yml["underscores"]
-        );
+        if (!is_null($yml)) {
+            $this->theme = array_replace(
+                $this->params["theme"],
+                $yml["underscores"]
+            );
+        }
 
         // Add rules
         $this->rules();
@@ -90,10 +96,10 @@ class Downloader extends Underscores {
 
             $content = file_get_contents($filename);
             $content = preg_replace("/\'_s\'/i", "'". $this->theme["slug"] ."'", $content);
-            $content = preg_replace("/_s_/i", $this->theme["slug"] . "_", $content);
-            $content = preg_replace("/Text Domain: _s/i", "Text Domain: " . $this->theme["slug"], $content);
-            $content = preg_replace("/ _s/i", " " . $this->theme["name"], $content);
-            $content = preg_replace("/_s-/i", $this->theme["slug"] . "-", $content);
+            $content = preg_replace("/_/i", $this->theme["slug"] . "_", $content);
+            $content = preg_replace("/Text Domain: /i", "Text Domain: " . $this->theme["slug"], $content);
+            $content = preg_replace("/ /i", " " . $this->theme["name"], $content);
+            $content = preg_replace("/-/i", $this->theme["slug"] . "-", $content);
             $content = preg_replace("/\"_s\"/i", '"'. $this->theme["name"] .'"', $content);
             $content = preg_replace("/^_s/i", $this->theme["name"], $content);
             file_put_contents($filename, $content);

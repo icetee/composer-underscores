@@ -1,17 +1,21 @@
 <?php
+
+namespace icetee\Composer;
+
+use Composer\Installer\LibraryInstaller;
+use Composer\Package\PackageInterface;
+
 /**
  *  Underscores
- *  @version 1.1
+ *  @version 1.1.1
  *
  */
-class Underscores
-{
-    /**
-     * Recursively copy files from one directory to another
-     *
-     * @param String $src - Source of files being moved
-     * @param String $dest - Destination of files being moved
-     */
+class Underscores extends LibraryInstaller {
+
+    public function getInstallPath(PackageInterface $package) {
+        return $package->getPrettyName();
+    }
+
     function rcopy($src, $dest, $skipping = array()){
 
         // If source is not a directory stop processing

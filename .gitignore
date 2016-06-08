@@ -9,6 +9,7 @@ log/
 # Composer
 local-config.php
 composer.phar
+composer.lock
 /vendor/
 
 # Frontend ignore
